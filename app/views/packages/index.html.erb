@@ -1,0 +1,8 @@
+<h2>Available Packages</h2>
+
+<% @packages.each do |package| %>
+  <ul>
+    <li><%= link_to package.name, package_path(package) %></li>
+    <li>Price: <%= number_to_currency package.price, unit: "₱" %></li>
+  </ul>
+<% end %>

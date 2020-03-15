@@ -1,0 +1,12 @@
+<h2><%= @package.name %></h2>
+<%= link_to "Edit Package", edit_package_path %>
+<%= button_to "Delete Package", @package, :method => 'delete', :data => { :confirm => "Are you sure?"} %>
+<ul>
+  <li>Places Include:</li>
+    <% @package.places.each do |places| %>
+      <ul>
+        <li><%= link_to places.name, place_path(places) %></li>
+      </ul>
+    <% end %>
+  <li>Price: <%= number_to_currency @package.price, unit: "₱" %></li>
+</ul>
