@@ -1,0 +1,8 @@
+<h2>All Places</h2>
+
+<% @places.each do |place| %>
+<ul>
+  <li><%= link_to place.name, place_path(place) %></li>
+  <li><%= place.image %></li>
+</ul>
+<% end %>

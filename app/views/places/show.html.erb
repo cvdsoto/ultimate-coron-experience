@@ -1,0 +1,7 @@
+<h2><%= @place.name %></h2>
+<%= link_to "Edit Place", edit_place_path %>
+<%= button_to "Delete Place", @place, :method => 'delete', :data => { :confirm => "Are you sure?"} %>
+<ul>
+  <li>Location: <%= @place.location %></li>
+  <li>Image: <%= @place.image if @place.image.present? %></li>
+</ul>
