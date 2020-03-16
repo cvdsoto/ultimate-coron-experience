@@ -4,8 +4,8 @@ u2 = User.create :email => 'kim@uce.com.ph', :password => 'chicken'
 u3 = User.create :email => 'thea@uce.com.ph', :password => 'chicken'
 
 Package.destroy_all
-p1 = Package.create :name => 'Town Tour', :price => 5500, :time => 'morning'
-p2 = Package.create :name => 'Island Hopping Tour', :price => 7450, :time => 'afternoon'
+p1 = Package.create :name => 'Town Tour', :price => 5500, :time => 'Morning'
+p2 = Package.create :name => 'Island Hopping Tour', :price => 7450, :time => 'Afternoon'
 
 Place.destroy_all
 l1 = Place.create :name => 'Mount Tapyas View Deck', :location => 'Coron Town Proper'

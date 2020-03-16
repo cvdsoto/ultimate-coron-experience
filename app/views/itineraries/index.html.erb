@@ -1,0 +1,13 @@
+<h2>All Itineraries</h2>
+
+<% @itineraries.each do |itinerary| %>
+<ul>
+  <li><%= itinerary.date %></li>
+  <% itinerary.user.each do |user| %>
+  <li><%= user.email %></li>
+  <% end %>
+  <% itinerary.packages.each do |package| %>
+    <li><%= package.name %></li>
+  <% end %>
+</ul>
+<% end %>
