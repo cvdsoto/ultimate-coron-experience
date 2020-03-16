@@ -3,10 +3,14 @@
   <%= f.text_field :name, :required => true, :autofocus => true %>
   <%= f.label :price %>
   <%= f.text_field :price %>
+  <%= f.label :time %>
+  <%= f.select :time , ["Morning", "Afternoon"] %>
   <%= f.collection_check_boxes :place_ids, Place.where(["package_id IS NULL or package_id = ?", @package.id]), :id, :name %>
-  <%= f.fields_for :places, @package.places.build do |places| %>
-    <%= places.label :name, "Add Place" %>
-    <%= places.text_field :name %>
+  <% if false %>
+    <%= f.fields_for :places, @package.places.build do |places| %>
+      <%= places.label :name, "Add Place" %>
+      <%= places.text_field :name %>
+    <% end %>
   <% end %>
   <%= f.submit %>
 <% end %>
