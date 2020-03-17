@@ -5,6 +5,7 @@
     <ul>
       <% itinerary.user.each do |user| %>
       <li><%= user.email %> <%= link_to "Edit Itinerary", edit_itinerary_path(itinerary, :user_id => user.id) %>
+        <%= button_to "Delete Package", itinerary_path(itinerary, :user_id => user.id), :method => 'delete', :data => { :confirm => "Are you sure?"} %>
       </li>
         <ul>
           <% itinerary.packages.each do |package| %>

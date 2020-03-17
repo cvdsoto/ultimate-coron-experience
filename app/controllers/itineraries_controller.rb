@@ -19,7 +19,6 @@ class ItinerariesController < ApplicationController
   def edit
     @itinerary = Itinerary.find params[:id]
     @user = params[:user_id]
-
   end
 
   def update
@@ -32,6 +31,12 @@ class ItinerariesController < ApplicationController
   end
 
   def destroy
+    user = User.find params[:user_id]
+    itinerary = user.itineraries.find params[:id]
+    count_itinerary = Itinerary.find params[:id]
+    raise 'hell'
+    user.itineraries.delete(itinerary)
+    redirect_to itineraries_path
   end
 
   private
