@@ -1,2 +1,12 @@
-<h1>Itineraries#show</h1>
-<p>Find me in app/views/itineraries/show.html.erb</p>
+<h2><%= @itinerary.date %> Details</h2>
+
+<ul>
+  <% @itinerary.user.each do |user| %>
+  <li><%= user.email %></li>
+    <ul>
+      <% @itinerary.packages.each do |package| %>
+      <li><%= package.name %></li>
+      <% end %>
+    </ul>
+  <% end %>
+</ul>

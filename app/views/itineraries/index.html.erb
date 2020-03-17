@@ -1,13 +1,28 @@
+<% if @current_user.admin? %>
 <h2>All Itineraries</h2>
-
-<% @itineraries.each do |itinerary| %>
-<ul>
-  <li><%= itinerary.date %></li>
-  <% itinerary.user.each do |user| %>
-  <li><%= user.email %></li>
+  <% @itineraries.each do |itinerary| %>
+    <p><%= itinerary.date %></p>
+    <ul>
+      <% itinerary.user.each do |user| %>
+      <li><%= user.email %></li>
+        <ul>
+          <% itinerary.packages.each do |package| %>
+            <li><%= package.name %></li>
+          <% end %>
+        </ul>
+      <% end %>
+    </ul>
   <% end %>
-  <% itinerary.packages.each do |package| %>
-    <li><%= package.name %></li>
+<% else %>
+<h2>My Itineraries</h2>
+  <% @user.each do |user| %>
+    <% user.itineraries.each do |itinerary| %>
+    <p><%= itinerary.date %></p>
+      <ul>
+        <% itinerary.packages.each do |package| %>
+          <li><%= package.name %></li>
+        <% end %>
+      </ul>
   <% end %>
-</ul>
+  <% end %>
 <% end %>

@@ -1,4 +1,5 @@
 class PlacesController < ApplicationController
+before_action :check_for_admin, :only => [:new]
   def index
     @places = Place.all
   end
