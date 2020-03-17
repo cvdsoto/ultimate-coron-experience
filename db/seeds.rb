@@ -29,4 +29,4 @@ i2.packages << p2
 
 puts "----Itinerary and Users"
 u2.itineraries << i2
-u3.itineraries << i1 << i2
+u3.itineraries << i1
