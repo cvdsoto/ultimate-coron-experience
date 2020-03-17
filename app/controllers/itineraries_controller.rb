@@ -8,11 +8,34 @@ class ItinerariesController < ApplicationController
   end
 
   def new
+    @itinerary = Itinerary.new
+  end
+
+  def create
+    itinerary = Itinerary.create itinerary_params
+    redirect_to itineraries_path
   end
 
   def edit
+    @itinerary = Itinerary.find params[:id]
+    @user = params[:user_id]
+
+  end
+
+  def update
+    itinerary = Itinerary.find params[:id]
+    itinerary.update itinerary_params
+    redirect_to itineraries_path
   end
 
   def show
+  end
+
+  def destroy
+  end
+
+  private
+  def itinerary_params
+    params.require(:itinerary).permit(:date, :user_ids, package_ids:[])
   end
 end

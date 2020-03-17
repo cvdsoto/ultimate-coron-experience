@@ -4,7 +4,8 @@
     <p><%= itinerary.date %></p>
     <ul>
       <% itinerary.user.each do |user| %>
-      <li><%= user.email %></li>
+      <li><%= user.email %> <%= link_to "Edit Itinerary", edit_itinerary_path(itinerary, :user_id => user.id) %>
+      </li>
         <ul>
           <% itinerary.packages.each do |package| %>
             <li><%= package.name %></li>

@@ -1,0 +1,11 @@
+<%= form_for @itinerary do |f| %>
+  <% if @current_user.admin? %>
+    <%= f.hidden_field :user_ids, :value => @user%>
+  <% else %>
+    <%= f.hidden_field :user_ids, :value => @current_user.id %>
+  <% end %>
+  <%= f.label :date %>
+  <%= f.date_field :date, :required => true, :autofocus => true %>
+  <%= f.collection_check_boxes :package_ids, Package.all, :id, :name %>
+  <%= f.submit %>
+<% end %>

@@ -21,6 +21,7 @@
           <%= link_to "All Itineraries", itineraries_path %>
         <% else %>
           <%= link_to "My Itineraries", itineraries_path %>
+          <%= link_to "Add Itinerary", new_itinerary_path %>
         <% end %>
         <%= link_to "Sign out", login_path, :method => 'delete' %>
       <% else %>
