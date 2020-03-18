@@ -15,6 +15,8 @@ before_action :check_for_admin, :only => [:new]
       place.image = req["public_id"]
       place.save
     end
+    package = Package.find params[:place][:package_id]
+    package.places << place
     redirect_to place
   end
 
@@ -24,7 +26,12 @@ before_action :check_for_admin, :only => [:new]
 
   def update
     place = Place.find params[:id]
-    place.update place_params
+    if params[:file].present?
+      req = Cloudinary::Uploader.upload(params[:file])
+      place.image = req["public_id"]
+    end
+    place.update_attributes place_params
+    place.save
     redirect_to place
   end
 
@@ -40,6 +47,6 @@ before_action :check_for_admin, :only => [:new]
 
   private
   def place_params
-    params.require(:place).permit(:name, :location, :image)
+    params.require(:place).permit(:name, :location, :image, package_id:[])
   end
 end

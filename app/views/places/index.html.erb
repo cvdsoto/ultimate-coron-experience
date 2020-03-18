@@ -5,7 +5,7 @@
   <% places.each do |place| %>
   <div class="col-md-4">
     <%= link_to place.name, place_path(place) %>
-    <%= cl_image_tag(place.image) if place.image.present? %>
+    <%= cl_image_tag(place.image, class: "img-thumbnail") if place.image.present? %>
     <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Non, magni, sit?</p>
     <p>Included in our <%= link_to place.package.name, package_path(place.package) if place.package.present? %></p>
   </div>
