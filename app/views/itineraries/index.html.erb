@@ -5,14 +5,14 @@
   <% itineraries.each do |itinerary| %>
     <div class="col-md-4">
     <p class="text-center"><%= itinerary.date %></p>
-    <ul class="list-inline text-center">
+    <ul class="list-unstyled">
       <% itinerary.user.each do |user| %>
-      <li class="list-inline-item"><%= user.email %> <%= link_to "Edit Itinerary", edit_itinerary_path(itinerary, :user_id => user.id), :class => "d-inline-block" %>
+      <li><%= user.email %> <%= link_to "Edit Itinerary", edit_itinerary_path(itinerary, :user_id => user.id), :class => "d-inline-block" %>
         <%= button_to "Delete Itinerary", itinerary_path(itinerary, :user_id => user.id), :method => 'delete', :data => { :confirm => "Are you sure?" }, :class => "d-inline-block btn btn-danger btn-sm" %>
       </li>
-        <ul class="list-inline text-center">
+        <ul>
           <% itinerary.packages.each do |package| %>
-            <li class="list-inline-item"><%= link_to package.name, package_path(package) %></li>
+            <li><%= link_to package.name, package_path(package) %></li>
           <% end %>
         </ul>
       <% end %>
