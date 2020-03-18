@@ -1,7 +1,7 @@
 <h2 class="text-center"><%= @place.name %></h2>
 <% if @current_user.present? %>
-  <%= link_to "Edit Place", edit_place_path if @current_user.admin? %>
-  <%= button_to "Delete Place", @place, :method => 'delete', :data => { :confirm => "Are you sure?"} if @current_user.admin? %>
+  <%= link_to "Edit Place", edit_place_path, :class => "d-inline-block" if @current_user.admin? %>
+  <%= button_to "Delete Place", @place, :method => 'delete', :data => { :confirm => "Are you sure?"}, :class => "d-inline-block btn btn-danger btn-sm" if @current_user.admin? %>
 <% end %>
 <ul class="list-inline text-center">
   <li class="list-inline-item">Included in <%= link_to @place.package.name, package_path(@place.package) if @place.package.present? %></li>

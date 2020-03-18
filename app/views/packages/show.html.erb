@@ -1,7 +1,7 @@
 <h2 class="text-center"><%= @package.name %></h2>
 <% if @current_user.present? %>
-  <%= link_to "Edit Package", edit_package_path if @current_user.admin? %>
-  <%= button_to "Delete Package", @package, :method => 'delete', :data => { :confirm => "Are you sure?"} if @current_user.admin? %>
+  <%= link_to "Edit Package", edit_package_path, :class => "d-inline-block" if @current_user.admin? %>
+  <%= button_to "Delete Package", @package, :method => 'delete', :data => { :confirm => "Are you sure?"}, :class => "d-inline-block btn btn-danger btn-sm" if @current_user.admin?%>
 <% end %>
 <ul class="list-inline text-center">
   <li class="list-inline-item">Places Include:</li>
