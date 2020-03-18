@@ -1,16 +1,22 @@
 <%= form_for @package do |f| %>
-  <%= f.label :name %>
-  <%= f.text_field :name, :required => true, :autofocus => true %>
-  <%= f.label :price %>
-  <%= f.text_field :price %>
-  <%= f.label :time %>
-  <%= f.select :time , ["Morning", "Afternoon"] %>
-  <%= f.collection_check_boxes :place_ids, Place.where(["package_id IS NULL or package_id = ?", @package.id]), :id, :name %>
-  <% if false %>
-    <%= f.fields_for :places, @package.places.build do |places| %>
-      <%= places.label :name, "Add Place" %>
-      <%= places.text_field :name %>
-    <% end %>
-  <% end %>
-  <%= f.submit %>
+  <fieldset class="form-group">
+    <%= f.label :name %>
+    <%= f.text_field :name, :required => true, :autofocus => true, :class => 'form-control'  %>
+  </fieldset>
+
+  <fieldset class="form-group">
+    <%= f.label :price %>
+    <%= f.text_field :price, :class => 'form-control' %>
+  </fieldset>
+
+  <fieldset class="form-group">
+    <%= f.label :time %>
+    <%= f.select :time , ["Morning", "Afternoon"] %>
+  </fieldset>
+
+  <fieldset class="form-group">
+    <%= f.collection_check_boxes :place_ids, Place.where(["package_id IS NULL or package_id = ?", @package.id]), :id, :name %>
+  </fieldset>
+
+  <%= f.submit 'Add Tour', :class =>'btn btn-primary' %>
 <% end %>

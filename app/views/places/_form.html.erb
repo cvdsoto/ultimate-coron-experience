@@ -1,10 +1,15 @@
 <%= form_for(@place, :html => {:multipart => true}) do |f| %>
+<fieldset class="form-group">
   <%= f.label :name %>
-  <%= f.text_field :name, :required => true, :autofocus => true %>
+  <%= f.text_field :name, :required => true, :autofocus => true, :class => 'form-control' %>
+</fieldset>
+<fieldset class="form-group">
   <%= f.label :location %>
-  <%= f.text_field :location %>
+  <%= f.text_field :location, :class => 'form-control' %>
+</fieldset>
+<fieldset class="form-group">
   <%= f.label :image %>
-  <%= f.cl_image_upload :image %>
-
-  <%= f.submit %>
+  <%= f.cl_image_upload :image, :class => 'form-control' %>
+</fieldset>
+  <%= f.submit 'Add Place', :class =>'btn btn-primary' %>
 <% end %>
