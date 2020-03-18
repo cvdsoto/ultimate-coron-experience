@@ -8,11 +8,20 @@
 <% end %>
 
 <%= form_for @user do |f| %>
+<fieldset class="form-group">
   <%= f.label :email %>
-  <%= f.email_field :email, :required => true, :autofocus => true %>
+  <%= f.email_field :email, :required => true, :autofocus => true, :class => 'form-control' %>
+</fieldset>
+
+<fieldset class="form-group">
   <%= f.label :password %>
-  <%= f.password_field :password, :required => true %>
+  <%= f.password_field :password, :required => true, :class => 'form-control' %>
+</fieldset>
+
+<fieldset class="form-group">
   <%= f.label :password_confirmation %>
-  <%= f.password_field :password_confirmation, :required => true %>
-  <%= f.submit "Sign up!" %>
+  <%= f.password_field :password_confirmation, :required => true, :class => 'form-control' %>
+</fieldset>
+
+  <%= f.submit "Sign up!", :class => 'btn btn-primary' %>
 <% end %>
