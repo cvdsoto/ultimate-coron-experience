@@ -3,6 +3,6 @@
 <% @places.each do |place| %>
 <ul>
   <li><%= link_to place.name, place_path(place) %></li>
-  <li><%= place.image %></li>
+  <li><%= cl_image_tag(place.image) if place.image.present? %></li>
 </ul>
 <% end %>

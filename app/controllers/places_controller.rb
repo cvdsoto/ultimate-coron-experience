@@ -9,7 +9,12 @@ before_action :check_for_admin, :only => [:new]
   end
 
   def create
-    place = Place.create place_params
+    place = Place.new place_params
+    if params[:file].present?
+      req = Cloudinary::Uploader.upload(params[:file])
+      place.image = req["public_id"]
+      place.save
+    end
     redirect_to place
   end
 

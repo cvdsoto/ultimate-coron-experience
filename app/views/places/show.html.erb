@@ -3,6 +3,6 @@
 <%= button_to "Delete Place", @place, :method => 'delete', :data => { :confirm => "Are you sure?"} %>
 <ul>
   <li>Location: <%= @place.location %></li>
-  <li>Image: <%= @place.image if @place.image.present? %></li>
-  <li>Included in <%= link_to @place.package.name, package_path(@place.package) %></li>
+  <li>Image: <%= cl_image_tag(@place.image) if @place.image.present? %></li>
+  <li>Included in <%= link_to @place.package.name, package_path(@place.package) if @place.package.present? %></li>
 </ul>

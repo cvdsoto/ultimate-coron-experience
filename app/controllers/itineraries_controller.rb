@@ -31,12 +31,14 @@ class ItinerariesController < ApplicationController
   end
 
   def destroy
-    user = User.find params[:user_id]
-    itinerary = user.itineraries.find params[:id]
-    count_itinerary = Itinerary.find params[:id]
-    raise 'hell'
-    user.itineraries.delete(itinerary)
+    itinerary = Itinerary.find params[:id]
+    itinerary.destroy
     redirect_to itineraries_path
+    # user = User.find params[:user_id]
+    # itinerary = user.itineraries.find params[:id]
+    # count_itinerary = Itinerary.find params[:id]
+    # # raise 'hell'
+    # user.itineraries.delete(itinerary
   end
 
   private
