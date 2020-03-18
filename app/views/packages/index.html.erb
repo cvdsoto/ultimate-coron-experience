@@ -6,6 +6,9 @@
   <div class="col-md-4">
     <%= link_to package.name, package_path(package) %>
     <p>Price: <%= number_to_currency package.price, unit: "₱" %></p>
+    <% package.places.each do |place| %>
+      <%= cl_image_tag(place.image, class: "img-thumbnail") if place.image.present? %>
+    <% end %>
     <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Non, magni, sit?</p>
   </div>
   <% end %>

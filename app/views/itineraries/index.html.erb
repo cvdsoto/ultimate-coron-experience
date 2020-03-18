@@ -4,7 +4,7 @@
 <div class="row">
   <% itineraries.each do |itinerary| %>
     <div class="col-md-4">
-    <p class="text-center"><%= itinerary.date %></p>
+    <p class="text-center"><%= itinerary.date.strftime '%A, %B %e, %Y' %></p>
     <ul class="list-unstyled">
       <% itinerary.user.each do |user| %>
       <li><%= user.email %> <%= link_to "Edit Itinerary", edit_itinerary_path(itinerary, :user_id => user.id), :class => "d-inline-block" %>

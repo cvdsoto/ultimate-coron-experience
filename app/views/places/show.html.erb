@@ -6,5 +6,5 @@
 <ul class="list-inline text-center">
   <li class="list-inline-item">Included in <%= link_to @place.package.name, package_path(@place.package) if @place.package.present? %></li>
   <li class="list-inline-item">Location: <%= @place.location %></li>
-  <li class="list-inline-item"><%= cl_image_tag(@place.image, class: "img-fluid") if @place.image.present?%></li>   <!-- #remove from list -->
 </ul>
+<%= cl_image_tag(@place.image, class: "img-fluid mx-auto d-block") if @place.image.present?%>
