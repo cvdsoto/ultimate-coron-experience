@@ -1,8 +1,14 @@
-<h2>All Places</h2>
+<h2 class="text-center">Places to Explore in Coron</h2>
 
-<% @places.each do |place| %>
-<ul>
-  <li><%= link_to place.name, place_path(place) %></li>
-  <li><%= cl_image_tag(place.image) if place.image.present? %></li>
-</ul>
+<% @places.each_slice(3) do |places| %>
+<div class="row">
+  <% places.each do |place| %>
+  <div class="col-md-4">
+    <%= link_to place.name, place_path(place) %>
+    <%= cl_image_tag(place.image) if place.image.present? %>
+    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Non, magni, sit?</p>
+    <p>Included in our <%= link_to place.package.name, package_path(place.package) if place.package.present? %></p>
+  </div>
+  <% end %>
+</div>
 <% end %>

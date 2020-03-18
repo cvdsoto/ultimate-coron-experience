@@ -1,8 +1,13 @@
-<h2>Available Packages</h2>
+<h2 class="text-center">Available Packages</h2>
 
-<% @packages.each do |package| %>
-  <ul>
-    <li><%= link_to package.name, package_path(package) %></li>
-    <li>Price: <%= number_to_currency package.price, unit: "₱" %></li>
-  </ul>
+<% @packages.each_slice(3) do |packages| %>
+<div class="row">
+  <% packages.each do |package| %>
+  <div class="col-md-4">
+    <%= link_to package.name, package_path(package) %>
+    <p>Price: <%= number_to_currency package.price, unit: "₱" %></p>
+    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Non, magni, sit?</p>
+  </div>
+  <% end %>
+</div>
 <% end %>
