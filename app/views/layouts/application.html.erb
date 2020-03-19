@@ -19,21 +19,21 @@
           <% if @current_user.present? %>
           <li class="nav-item nav-link text-light" >Welcome <%= @current_user.email %>!</li>
           <% if @current_user.admin? %>
-            <li class="nav-item nav-link" ><%= link_to "Places", places_path, :class => "text-light" %></li>
-            <li class="nav-item nav-link" ><%= link_to "Add Place", new_place_path, :class => "text-light" %></li>
             <li class="nav-item nav-link" ><%= link_to "Tours", packages_path, :class => "text-light" %></li>
             <li class="nav-item nav-link" ><%= link_to "Add Tour", new_package_path, :class => "text-light" %></li>
+            <li class="nav-item nav-link" ><%= link_to "Places", places_path, :class => "text-light" %></li>
+            <li class="nav-item nav-link" ><%= link_to "Add Place", new_place_path, :class => "text-light" %></li>
             <li class="nav-item nav-link" ><%= link_to "All Itineraries", itineraries_path, :class => "text-light" %></li>
           <% else %>
-            <li class="nav-item nav-link" ><%= link_to "Places", places_path, :class => "text-light" %></li>
             <li class="nav-item nav-link" ><%= link_to "Tours", packages_path, :class => "text-light" %></li>
+            <li class="nav-item nav-link" ><%= link_to "Places", places_path, :class => "text-light" %></li>
             <li class="nav-item nav-link" ><%= link_to "My Itineraries", itineraries_path, :class => "text-light" %></li>
             <li class="nav-item nav-link" ><%= link_to "Add Itinerary", new_itinerary_path, :class => "text-light" %></li>
           <% end %>
             <li class="nav-item nav-link" ><%= link_to "Sign out", login_path, :method => 'delete', :class => "text-light" %></li>
         <% else %>
-          <%= link_to "Places", places_path, class: "nav-item nav-link" %>
           <%= link_to "Tours", packages_path, class: "nav-item nav-link" %>
+          <%= link_to "Places", places_path, class: "nav-item nav-link" %>
           <%= link_to "Sign up", new_user_path, class: "nav-item nav-link"  %>
           <%= link_to "Sign in", login_path, class: "nav-item nav-link" %>
         <% end %>
