@@ -1,6 +1,6 @@
 class ItinerariesController < ApplicationController
-before_action :check_for_login, :only => [:index],
-              :check_for_admin :only => [:edit, :destroy]
+before_action :check_for_login, :only => [:index]
+before_action :check_for_admin, :only => [:edit, :destroy]
 
   def index
     if @current_user.present? && @current_user.admin?

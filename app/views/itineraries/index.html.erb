@@ -12,8 +12,8 @@
           <p class="text-center"><%= itinerary.date.strftime '%A, %B %e, %Y' %></p>
           <ul class="list-unstyled">
           <% itinerary.user.each do |user| %>
-            <li><%= user.email %> <%= link_to "Edit Itinerary", edit_itinerary_path(itinerary, :user_id => user.id), :class => "d-inline-block" %>
-            <%= button_to "Delete Itinerary", itinerary_path(itinerary, :user_id => user.id), :method => 'delete', :data => { :confirm => "Are you sure?" }, :class => "d-inline-block btn btn-danger btn-sm" %>
+            <li><%= user.email %> <%= link_to "Edit", edit_itinerary_path(itinerary, :user_id => user.id), :class => "d-inline-block" %>
+            <%= button_to "Delete", itinerary_path(itinerary, :user_id => user.id), :method => 'delete', :data => { :confirm => "Are you sure?" }, :class => "d-inline-block btn btn-danger btn-sm" %>
             </li>
             <ul>
               <% itinerary.packages.each do |package| %>
