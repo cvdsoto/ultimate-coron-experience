@@ -1,3 +1,14 @@
+<% if @place.longitude.present? %>
+  <% provide :head_tags do %>
+    <meta name='turbolinks-visit-control' content='reload'>
+    <script>
+    document.addEventListener("DOMContentLoaded", function(){
+        initMap(<%=@place.latitude%>, <%=@place.longitude%>)
+    });
+    </script>
+  <% end %>
+<% end %>
+
 <h2 class="text-center"><%= @place.name %></h2>
 <% if @current_user.present? %>
   <%= link_to "Edit Place", edit_place_path, :class => "d-inline-block" if @current_user.admin? %>
@@ -5,6 +16,6 @@
 <% end %>
 <ul class="list-inline text-center">
   <li class="list-inline-item">Included in <%= link_to @place.package.name, package_path(@place.package) if @place.package.present? %></li>
-  <li class="list-inline-item">Location: <%= @place.location %></li>
+  <li class="list-inline-item">Location: <div id="map"></div></li>
 </ul>
 <%= cl_image_tag(@place.image, class: "img-fluid mx-auto d-block") if @place.image.present?%>
