@@ -1,3 +1,4 @@
+<%# for google maps api! %>
 <% if @place.longitude.present? %>
   <% provide :head_tags do %>
     <meta name='turbolinks-visit-control' content='reload'>
@@ -11,6 +12,7 @@
 
 <h2 class="text-center"><%= @place.name %></h2>
 
+<!-- only display this for admin -->
 <div class="text-center">
   <% if @current_user.present? %>
     <%= link_to "Edit Place", edit_place_path, :class => "d-inline-block" if @current_user.admin? %>

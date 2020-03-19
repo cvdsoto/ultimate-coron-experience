@@ -1,4 +1,7 @@
 class ItinerariesController < ApplicationController
+before_action :check_for_login, :only => [:index],
+              :check_for_admin :only => [:edit, :destroy]
+
   def index
     if @current_user.present? && @current_user.admin?
       @itineraries = Itinerary.all.order(:date)
@@ -27,18 +30,10 @@ class ItinerariesController < ApplicationController
     redirect_to itineraries_path
   end
 
-  def show
-  end
-
   def destroy
     itinerary = Itinerary.find params[:id]
     itinerary.destroy
     redirect_to itineraries_path
-    # user = User.find params[:user_id]
-    # itinerary = user.itineraries.find params[:id]
-    # count_itinerary = Itinerary.find params[:id]
-    # # raise 'hell'
-    # user.itineraries.delete(itinerary
   end
 
   private

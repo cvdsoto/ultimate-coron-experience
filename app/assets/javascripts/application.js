@@ -16,12 +16,14 @@
 //= require bootstrap
 //= require_tree .
 
+//get latitude and longitude to display markers on google maps
 function initMap(lat, lng) {
     var myCoords = new google.maps.LatLng(lat, lng);
     var mapOptions = {
     center: myCoords,
     zoom: 15
     };
+    // this is where google maps will be displayed
     var map = new google.maps.Map(document.getElementById('map'), mapOptions);
 
     var marker = new google.maps.Marker({

@@ -1,7 +1,9 @@
 <h2 class="text-center">Places to Explore in Coron</h2>
 
+<%# To display 3 places in columns per row %>
 <% @places.each_slice(3) do |places| %>
 <div class="row">
+  <%# To get a place in a column %>
   <% places.each do |place| %>
   <div class="col-md-4">
     <%= link_to place.name, place_path(place) %>

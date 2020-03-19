@@ -1,5 +1,8 @@
 class PackagesController < ApplicationController
+before_action :check_for_admin, :only => [:new, :edit, :destroy]
+
   def index
+    # sort by created at
     @packages = Package.all.order('created_at')
   end
 
@@ -14,7 +17,6 @@ class PackagesController < ApplicationController
 
   def edit
     @package = Package.find params[:id]
-    # raise 'hell'
   end
 
   def update

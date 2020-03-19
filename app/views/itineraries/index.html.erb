@@ -1,42 +1,54 @@
+<%# checks if user logged in is an admin or not. admin can view all itineraries. other users can only see their own itinerary %>
 <% if @current_user.admin? %>
-<h2 class="text-center">All Itineraries</h2>
-<% @itineraries.each_slice(3) do |itineraries| %>
-<div class="row">
-  <% itineraries.each do |itinerary| %>
-    <div class="col-md-4">
-    <p class="text-center"><%= itinerary.date.strftime '%A, %B %e, %Y' %></p>
-    <ul class="list-unstyled">
-      <% itinerary.user.each do |user| %>
-      <li><%= user.email %> <%= link_to "Edit Itinerary", edit_itinerary_path(itinerary, :user_id => user.id), :class => "d-inline-block" %>
-        <%= button_to "Delete Itinerary", itinerary_path(itinerary, :user_id => user.id), :method => 'delete', :data => { :confirm => "Are you sure?" }, :class => "d-inline-block btn btn-danger btn-sm" %>
-      </li>
-        <ul>
-          <% itinerary.packages.each do |package| %>
-            <li><%= link_to package.name, package_path(package) %></li>
-          <% end %>
-        </ul>
-      <% end %>
-    </ul>
-    </div>
-  <% end %>
-  </div>
-  <% end %>
-<% else %>
-<h2 class="text-center">My Itineraries</h2>
-  <% @user.each do |user| %>
-    <% user.itineraries.order('date').each_slice(3) do |itineraries| %>
+
+  <h2 class="text-center">All Itineraries</h2>
+
+  <%# To display 3 columns per row %>
+  <% @itineraries.each_slice(3) do |itineraries| %>
     <div class="row">
+      <%# To put itinerary on one column %>
       <% itineraries.each do |itinerary| %>
         <div class="col-md-4">
-          <p><%= itinerary.date.strftime '%A, %B %e, %Y' %></p>
-          <ul>
-            <% itinerary.packages.each do |package| %>
-              <li><%= link_to package.name, package_path(package) %></li>
-            <% end %>
+          <p class="text-center"><%= itinerary.date.strftime '%A, %B %e, %Y' %></p>
+          <ul class="list-unstyled">
+          <% itinerary.user.each do |user| %>
+            <li><%= user.email %> <%= link_to "Edit Itinerary", edit_itinerary_path(itinerary, :user_id => user.id), :class => "d-inline-block" %>
+            <%= button_to "Delete Itinerary", itinerary_path(itinerary, :user_id => user.id), :method => 'delete', :data => { :confirm => "Are you sure?" }, :class => "d-inline-block btn btn-danger btn-sm" %>
+            </li>
+            <ul>
+              <% itinerary.packages.each do |package| %>
+                <li><%= link_to package.name, package_path(package) %></li>
+              <% end %>
+            </ul>
+          <% end %>
           </ul>
         </div>
       <% end %>
     </div>
+  <% end %>
+  <%# end admin view %>
+
+<% else %>
+
+  <%# Non-admin view %>
+  <h2 class="text-center">My Itineraries</h2>
+
+  <%# Get user first and display 3 itineraries in columns per row %>
+  <% @user.each do |user| %>
+    <% user.itineraries.order('date').each_slice(3) do |itineraries| %>
+      <div class="row">
+        <% itineraries.each do |itinerary| %>
+          <div class="col-md-4">
+            <p><%= itinerary.date.strftime '%A, %B %e, %Y' %></p>
+            <ul>
+            <% itinerary.packages.each do |package| %>
+              <li><%= link_to package.name, package_path(package) %></li>
+            <% end %>
+            </ul>
+          </div>
+        <% end %>
+      </div>
     <% end %>
   <% end %>
+
 <% end %>

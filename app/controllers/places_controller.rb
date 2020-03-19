@@ -1,5 +1,6 @@
 class PlacesController < ApplicationController
-before_action :check_for_admin, :only => [:new]
+before_action :check_for_admin, :only => [:new, :edit, :destroy]
+
   def index
     @places = Place.all.order('created_at')
   end
@@ -10,11 +11,13 @@ before_action :check_for_admin, :only => [:new]
 
   def create
     place = Place.new place_params
+    #to upload cloudinary link in database
     if params[:file].present?
       req = Cloudinary::Uploader.upload(params[:file])
       place.image = req["public_id"]
       place.save
     end
+    #checks if there was a package selected
     if params[:place][:package_id] != ''
       package = Package.find params[:place][:package_id]
       package.places << place
@@ -28,6 +31,7 @@ before_action :check_for_admin, :only => [:new]
 
   def update
     place = Place.find params[:id]
+    #to upload cloudinary link in database
     if params[:file].present?
       req = Cloudinary::Uploader.upload(params[:file])
       place.image = req["public_id"]

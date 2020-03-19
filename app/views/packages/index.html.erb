@@ -1,7 +1,9 @@
 <h2 class="text-center">Available Packages</h2>
 
+<%# To display 3 packages in columns per row %>
 <% @packages.each_slice(3) do |packages| %>
 <div class="row">
+  <%# To get a package in a column %>
   <% packages.each do |package| %>
   <div class="col-md-4">
     <%= link_to package.name, package_path(package) %>
