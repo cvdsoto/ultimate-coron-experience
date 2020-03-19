@@ -15,8 +15,10 @@ before_action :check_for_admin, :only => [:new]
       place.image = req["public_id"]
       place.save
     end
-    package = Package.find params[:place][:package_id]
-    package.places << place
+    if params[:place][:package_id] != ''
+      package = Package.find params[:place][:package_id]
+      package.places << place
+    end
     redirect_to place
   end
 

@@ -24,13 +24,19 @@
 <% else %>
 <h2 class="text-center">My Itineraries</h2>
   <% @user.each do |user| %>
-    <% user.itineraries.each do |itinerary| %>
-    <p><%= itinerary.date.strftime '%A, %B %e, %Y' %></p>
-      <ul>
-        <% itinerary.packages.each do |package| %>
-          <li><%= link_to package.name, package_path(package) %></li>
-        <% end %>
-      </ul>
-  <% end %>
+    <% user.itineraries.each_slice(3) do |itineraries| %>
+    <div class="row">
+      <% itineraries.each do |itinerary| %>
+        <div class="col-md-4">
+          <p><%= itinerary.date.strftime '%A, %B %e, %Y' %></p>
+          <ul>
+            <% itinerary.packages.each do |package| %>
+              <li><%= link_to package.name, package_path(package) %></li>
+            <% end %>
+          </ul>
+        </div>
+      <% end %>
+    </div>
+    <% end %>
   <% end %>
 <% end %>

@@ -10,12 +10,25 @@
 <% end %>
 
 <h2 class="text-center"><%= @place.name %></h2>
-<% if @current_user.present? %>
-  <%= link_to "Edit Place", edit_place_path, :class => "d-inline-block" if @current_user.admin? %>
-  <%= button_to "Delete Place", @place, :method => 'delete', :data => { :confirm => "Are you sure?"}, :class => "d-inline-block btn btn-danger btn-sm" if @current_user.admin? %>
-<% end %>
+
+<div class="text-center">
+  <% if @current_user.present? %>
+    <%= link_to "Edit Place", edit_place_path, :class => "d-inline-block" if @current_user.admin? %>
+    <%= button_to "Delete Place", @place, :method => 'delete', :data => { :confirm => "Are you sure?"}, :class => "d-inline-block btn btn-danger btn-sm" if @current_user.admin? %>
+  <% end %>
+</div>
+
 <ul class="list-inline text-center">
   <li class="list-inline-item">Included in <%= link_to @place.package.name, package_path(@place.package) if @place.package.present? %></li>
-  <li class="list-inline-item">Location: <div id="map"></div></li>
 </ul>
-<%= cl_image_tag(@place.image, class: "img-fluid mx-auto d-block") if @place.image.present?%>
+
+<div class="row">
+  <div class="col-md-6">
+    <%= cl_image_tag(@place.image, class: "img-fluid mx-auto d-block") if @place.image.present?%>
+  </div>
+  <div class="col-md-6">
+    <div id="map"></div>
+  </div>
+</div>
+
+<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sint, vitae, aliquid. Laborum perferendis modi quidem asperiores provident facere libero velit. Voluptatem impedit, aperiam voluptatum sequi facere culpa quisquam, vel suscipit!</p>
