@@ -1,7 +1,7 @@
 class PlacesController < ApplicationController
 before_action :check_for_admin, :only => [:new]
   def index
-    @places = Place.all
+    @places = Place.all.order('created_at')
   end
 
   def new

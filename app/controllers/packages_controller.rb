@@ -1,6 +1,6 @@
 class PackagesController < ApplicationController
   def index
-    @packages = Package.all
+    @packages = Package.all.order('created_at')
   end
 
   def new

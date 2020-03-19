@@ -1,16 +1,24 @@
 <h2 class="text-center"><%= @package.name %></h2>
-<% if @current_user.present? %>
-  <%= link_to "Edit Package", edit_package_path, :class => "d-inline-block" if @current_user.admin? %>
-  <%= button_to "Delete Package", @package, :method => 'delete', :data => { :confirm => "Are you sure?"}, :class => "d-inline-block btn btn-danger btn-sm" if @current_user.admin?%>
-<% end %>
+<div class="text-center">
+  <% if @current_user.present? %>
+    <%= link_to "Edit Package", edit_package_path, :class => "d-inline-block" if @current_user.admin? %>
+    <%= button_to "Delete Package", @package, :method => 'delete', :data => { :confirm => "Are you sure?"}, :class => "d-inline-block btn btn-danger btn-sm" if @current_user.admin?%>
+  <% end %>
+</div>
+
 <ul class="list-inline text-center">
-  <li class="list-inline-item">Places Include:</li>
-    <% @package.places.each do |places| %>
-      <ul class="list-inline text-center">
-        <li class="list-inline-item"><%= link_to places.name, place_path(places) %></li>
-      </ul>
-    <% end %>
   <li class="list-inline-item">Price: <%= number_to_currency @package.price, unit: "₱" %></li>
   <li class="list-inline-item">Time of tour: <%= @package.time %></li>
 </ul>
+<p class="text-center">Places Include:</p>
+<% @package.places.each_slice(3) do |places| %>
+  <div class="row">
+  <% places.each do |place| %>
+    <div class="col-md-4">
+      <%= link_to place.name, place_path(place) %>
+      <%= cl_image_tag(place.image, class: "img-fluid mx-auto d-block") if place.image.present?%>
+    </div>
+  <% end %>
+  </div>
+<% end %>
 <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Recusandae natus consectetur autem fuga dignissimos porro aliquam aliquid, asperiores, hic magnam, laudantium adipisci vero numquam, eveniet earum. Et minima dolore repellat.</p>

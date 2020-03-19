@@ -24,7 +24,7 @@
 <% else %>
 <h2 class="text-center">My Itineraries</h2>
   <% @user.each do |user| %>
-    <% user.itineraries.each_slice(3) do |itineraries| %>
+    <% user.itineraries.order('date').each_slice(3) do |itineraries| %>
     <div class="row">
       <% itineraries.each do |itinerary| %>
         <div class="col-md-4">

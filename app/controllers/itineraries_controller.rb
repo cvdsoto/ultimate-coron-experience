@@ -1,7 +1,7 @@
 class ItinerariesController < ApplicationController
   def index
     if @current_user.present? && @current_user.admin?
-      @itineraries = Itinerary.all
+      @itineraries = Itinerary.all.order(:date)
     else
       @user = User.where("email = ?", @current_user.email)
     end
