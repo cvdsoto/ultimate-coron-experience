@@ -49,6 +49,6 @@ before_action :check_for_admin, :only => [:new]
 
   private
   def place_params
-    params.require(:place).permit(:name, :location, :image, package_id:[])
+    params.require(:place).permit(:name, :location, :image, :package_id)
   end
 end
