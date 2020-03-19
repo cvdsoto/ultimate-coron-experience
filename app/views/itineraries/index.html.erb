@@ -25,7 +25,7 @@
 <h2 class="text-center">My Itineraries</h2>
   <% @user.each do |user| %>
     <% user.itineraries.each do |itinerary| %>
-    <p><%= itinerary.date %></p>
+    <p><%= itinerary.date.strftime '%A, %B %e, %Y' %></p>
       <ul>
         <% itinerary.packages.each do |package| %>
           <li><%= link_to package.name, package_path(package) %></li>
