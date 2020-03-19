@@ -8,10 +8,10 @@ p1 = Package.create :name => 'Town Tour', :price => 5500, :time => 'Morning'
 p2 = Package.create :name => 'Island Hopping Tour', :price => 7450, :time => 'Afternoon'
 
 Place.destroy_all
-l1 = Place.create :name => 'Mount Tapyas View Deck', :location => 'Coron Town Proper'
-l2 = Place.create :name => 'Cashew Factory', :location => 'Coron Town Proper'
-l3 = Place.create :name => 'Twin Lagoon', :location => 'Banauang Daan, Coron'
-l4 = Place.create :name => 'Kayangan Lake', :location => 'Banauang Daan, Coron'
+l1 = Place.create :name => 'Mount Tapyas View Deck', :location => 'Mount Tapyas', :latitude => 12.004846, :longitude => 120.2047511
+l2 = Place.create :name => 'Cashew Factory', :location => 'L. Escarda’S Coron Harvest' , :latitude => 11.9930055, :longitude => 120.2112555
+l3 = Place.create :name => 'Twin Lagoon', :location => 'Twin Lagoon, Coron', :latitude => 11.9479543, :longitude => 120.2107536
+l4 = Place.create :name => 'Kayangan Lake', :location => 'Kayangan Lake, Coron', :latitude => 11.959335, :longitude => 120.2261459
 
 Itinerary.destroy_all
 i1 = Itinerary.create :date => DateTime.new(2020, 4, 15)
