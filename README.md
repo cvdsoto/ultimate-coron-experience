@@ -1,24 +1,16 @@
-# README
+## Ultimate Coron Experience!
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+This is our second project for our SEI course at GA. I made a site for a touring agency in the Philippines named "Ultimate Coron Experience" for people to see the tour packages available and "reserve" a tour on a certain date. An admin can also maintain the tour packages and places they offer. A live demo link can be seen [here](https://ultimatecoronexperience.herokuapp.com/).
 
-Things you may want to cover:
+### Technologies Used
+This site was made by using HTML, Bootstrap, JavaScript, and Ruby on Rails.
 
-* Ruby version
+### Features
+- Unregistered users can view the tour packages and the places and can create an account with them.
+- Additionally, registered users can create a booking (itinerary) by selecting a date and tour package. Once created, you can't edit the itinerary.
+- An admin account can add, edit, delete, and view the tour packages and places they offer. The admin is also the only one who can edit and delete the users' itineraries.
 
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+### Wish List
+- Display markers on all the places in the Google maps API when a user views the tour package
+- Create a multipage form for the itinerary page
+- Ability to add a tour package to the itinerary on the tour package page
