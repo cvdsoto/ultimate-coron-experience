@@ -13,4 +13,4 @@ This site was made by using HTML, Bootstrap, JavaScript, and Ruby on Rails.
 ### Wish List
 - Display markers on all the places in the Google maps API when a user views the tour package
 - Create a multipage form for the itinerary page
-- Ability to add a tour package to the itinerary on the tour package page
+- Ability to add a tour package to the itinerary when the user is in the tour package page
